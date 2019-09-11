@@ -1,4 +1,4 @@
-function [] = postTrialCalc(variablesFile,trialCounter) 
+function [] = postTrialCalc(variablesFile) 
 load(variablesFile);
 
 w(:,:) = w(:,:) + deltaWTotal(:,:); %Adjust w matrix at end of trial
@@ -38,15 +38,15 @@ AvgFRPrefferedCortex(numExcCellsCortex + inhCellsInCorticalGroup + 1:numCortical
 AvgFRNullCortex(excCellsInCorticalGroup + 1:numExcCellsCortex,trialCounter) = sum(spikeTrain(excCellsInCorticalGroup + 1:numExcCellsCortex,2501:7500),2) * 2;
 AvgFRNullCortex(numExcCellsCortex + inhCellsInCorticalGroup + 1:numCorticalCells,trialCounter) = sum(spikeTrain(numExcCellsCortex + inhCellsInCorticalGroup + 1:numCorticalCells,2501:7500),2) * 2; 
 
-AvgFRPrefferedExcCortexMatrixGroup1(outerTrialCount,trialCounter) = mean(AvgFRPrefferedCortex(1:excCellsInCorticalGroup,outerTrialCount));
-AvgFRNullExcCortexMatrixGroup1(outerTrialCount,trialCounter) = mean(AvgFRNullCortex(1:excCellsInCorticalGroup,outerTrialCount));
-AvgFRPrefferedInhCortexMatrixGroup1(outerTrialCount,trialCounter) = mean(AvgFRPrefferedCortex(numExcCellsCortex+1:numExcCellsCortex + inhCellsInCorticalGroup,outerTrialCount));
-AvgFRNullInhCortexMatrixGroup1(outerTrialCount,trialCounter) = mean(AvgFRNullCortex(numExcCellsCortex+1:numExcCellsCortex + inhCellsInCorticalGroup,outerTrialCount));
+AvgFRPrefferedExcCortexMatrixGroup1(outerTrialCount,trialCounter) = mean(AvgFRPrefferedCortex(1:excCellsInCorticalGroup,trialCounter));
+AvgFRNullExcCortexMatrixGroup1(outerTrialCount,trialCounter) = mean(AvgFRNullCortex(1:excCellsInCorticalGroup,trialCounter));
+AvgFRPrefferedInhCortexMatrixGroup1(outerTrialCount,trialCounter) = mean(AvgFRPrefferedCortex(numExcCellsCortex+1:numExcCellsCortex + inhCellsInCorticalGroup,trialCounter));
+AvgFRNullInhCortexMatrixGroup1(outerTrialCount,trialCounter) = mean(AvgFRNullCortex(numExcCellsCortex+1:numExcCellsCortex + inhCellsInCorticalGroup,trialCounter));
 
-AvgFRPrefferedExcCortexMatrixGroup2(outerTrialCount,trialCounter) = mean(AvgFRPrefferedCortex(excCellsInCorticalGroup+1:numExcCellsCortex,outerTrialCount));
-AvgFRNullExcCortexMatrixGroup2(outerTrialCount,trialCounter) = mean(AvgFRNullCortex(excCellsInCorticalGroup+1:numExcCellsCortex,outerTrialCount));
-AvgFRPrefferedInhCortexMatrixGroup2(outerTrialCount,trialCounter) = mean(AvgFRPrefferedCortex(numExcCellsCortex+inhCellsInCorticalGroup +1:numCorticalCells, outerTrialCount));
-AvgFRNullInhCortexMatrixGroup2(outerTrialCount,trialCounter) = mean(AvgFRNullCortex(numExcCellsCortex+inhCellsInCorticalGroup + 1:numCorticalCells,outerTrialCount));
+AvgFRPrefferedExcCortexMatrixGroup2(outerTrialCount,trialCounter) = mean(AvgFRPrefferedCortex(excCellsInCorticalGroup+1:numExcCellsCortex,trialCounter));
+AvgFRNullExcCortexMatrixGroup2(outerTrialCount,trialCounter) = mean(AvgFRNullCortex(excCellsInCorticalGroup+1:numExcCellsCortex,trialCounter));
+AvgFRPrefferedInhCortexMatrixGroup2(outerTrialCount,trialCounter) = mean(AvgFRPrefferedCortex(numExcCellsCortex+inhCellsInCorticalGroup +1:numCorticalCells, trialCounter));
+AvgFRNullInhCortexMatrixGroup2(outerTrialCount,trialCounter) = mean(AvgFRNullCortex(numExcCellsCortex+inhCellsInCorticalGroup + 1:numCorticalCells,trialCounter));
 
 %Calculate avg synaptic weight values at end of every trial%
 avgWeightEtoE1(trialCounter+1) =  mean(mean(w(1:excCellsInCorticalGroup,1:excCellsInCorticalGroup),1),2);

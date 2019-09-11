@@ -3,7 +3,7 @@
 %Experiment Parameters%
 dt = 0.1;               % timestep in ms
 tmax = 1500;            % trial timme in ms
-numTrainingTrials = 5; %120; %40; %75; %50;  % number of trials where training conditions apply
+numTrainingTrials = 20; %120; %40; %75; %50;  % number of trials where training conditions apply
 numTestingTrials = 0; %300; %15; %10; %15;   % number of trials where testing conditions apply 
 numTrials = numTrainingTrials + numTestingTrials;          % number of trials
 numOuterTrials = 1; %15;

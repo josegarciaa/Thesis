@@ -1,4 +1,4 @@
-function [] = setupTrial(variablesFile,trialCounter) 
+function [] = setupTrial(variablesFile) 
 load(variablesFile);
 
 %Reset variables at start of trial%

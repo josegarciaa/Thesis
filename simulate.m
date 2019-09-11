@@ -1,4 +1,4 @@
-function [] = simulate(variablesFile,trialCounter) 
+function [] = simulate(variablesFile) 
 load(variablesFile);
 
 for t = 2:trialLength %For loop containing calculations done at every timestep

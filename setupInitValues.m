@@ -21,17 +21,29 @@ if strcmp(STDPAmplitude,'Large')
     ampLTP = .001; %.01;%.05;%.20;           %Amplitude of LTP
 end
 
-%Triplet STDP Parameters%
-if strcmp(STDPAmplitude,'Large') 
-    dW_stdpp_3 =  .00001; %Maximum increase in strength for each triplet (S)
-    dW_stdpp_2 =  .0001; %Maximum increase in strength for each pairing (S)
-    dW_stdpm =    .0005; %Maximum decrease in strength for each pairing (S)
+
+if strcmp(STDPAmplitude,'Large') && strcmp(ColumnSetupCortex,'Recurrent')  
+    dW_stdpp_3 =  .001; %Maximum increase in strength for each triplet (S)
+    dW_stdpp_2 =  .01; %Maximum increase in strength for each pairing (S)
+    dW_stdpm =    .013; %Maximum decrease in strength for each pairing (S)
 end
 
-if strcmp(STDPAmplitude,'Small') 
-    dW_stdpp_3 = 0.03e-7;   % maximum increase in strength for each triplet (S)
-    dW_stdpp_2 = 0.02e-7;   % maximum increase in strength for each pairing (S)
-    dW_stdpm = 0.060e-7;    % maximum decrease in strength for each pairing (S)
+if strcmp(STDPAmplitude,'Small') && strcmp(ColumnSetupCortex,'Recurrent') 
+    dW_stdpp_3 =  .0001; %Maximum increase in strength for each triplet (S)
+    dW_stdpp_2 =  .001; %Maximum increase in strength for each pairing (S)
+    dW_stdpm =    .0013; %Maximum decrease in strength for each pairing (S)
+end
+
+if strcmp(STDPAmplitude,'Large') && strcmp(ColumnSetupCortex,'Inhibition Stabilized')  
+    dW_stdpp_3 =  .0005; %Maximum increase in strength for each triplet (S)
+    dW_stdpp_2 =  .003; %Maximum increase in strength for each pairing (S)
+    dW_stdpm =    .003; %Maximum decrease in strength for each pairing (S)
+end
+
+if strcmp(STDPAmplitude,'Small') && strcmp(ColumnSetupCortex,'Inhibition Stabilized')  
+    dW_stdpp_3 =  .0005; %Maximum increase in strength for each triplet (S)
+    dW_stdpp_2 =  .003; %Maximum increase in strength for each pairing (S)
+    dW_stdpm =    .003; %Maximum decrease in strength for each pairing (S)
 end
 
 %Setup input current for trial%

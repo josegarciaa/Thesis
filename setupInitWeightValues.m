@@ -36,8 +36,15 @@ if strcmp(crossColumnSettingCortex,'No Connections')
     weightIIoutCortexGroup = 0; %Initial weight of II connections between groups
 end
 
-if strcmp(crossColumnSettingCortex,'EE') 
-    weightEEoutCortexGroup = .02; %Initial weight of EE connections between groups
+if strcmp(crossColumnSettingCortex,'EE') && strcmp(ColumnSetupCortex,'Inhibition Stabilized')  
+    weightEEoutCortexGroup = .0125; %Initial weight of EE connections between groups
+    weightEIoutCortexGroup = 0; %Initial weight of EI connections between groups
+    weightIEoutCortexGroup = 0; %Initial weight of IE connections between groups
+    weightIIoutCortexGroup = 0; %Initial weight of II connections between groups
+end
+
+if strcmp(crossColumnSettingCortex,'EE') && strcmp(ColumnSetupCortex,'Recurrent')  
+    weightEEoutCortexGroup = .025; %Initial weight of EE connections between groups
     weightEIoutCortexGroup = 0; %Initial weight of EI connections between groups
     weightIEoutCortexGroup = 0; %Initial weight of IE connections between groups
     weightIIoutCortexGroup = 0; %Initial weight of II connections between groups
@@ -62,7 +69,7 @@ if strcmp(LGNtoCortexSetup,'Feedforward to Exc')
     weightINtoCortex = .01;
     group1Bias = 1.5; 
     group2Bias = 1.5; 
-    weightLGNtoCortexBase = 1; 
+    weightLGNtoCortexBase = 1.25; 
 end
 
  OriginalweightEEinCortexGroup = weightEEinCortexGroup; 
